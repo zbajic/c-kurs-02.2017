@@ -35,3 +35,60 @@ void setStartPosition(car* array, raceTracks* rt) {
 
 	}
 }
+/*
+ ============================================================================
+ Name        : Common_Car_Function.c
+ Author      : RT-RK
+ Version     : 1.00.000
+ Copyright   : Vanja Prpos
+ Description : RACE in C
+ ============================================================================
+ */
+int setWeatherCondition() {
+	srand(time(NULL));
+	int weatherCondition = rand() % 2;
+	return weatherCondition;
+}
+
+void setGenerator(raceTracks* raceTrack1, car* array) {
+	int generator;
+	double step;
+	int i;
+	for (i = 0; i < 9; i++) {
+		if (raceTrack1->weatherCondition == 0) {
+			srand(time(NULL));
+			generator = 7 + rand() % 3;
+			if (array[i].tires == 0) {
+				step = generator;
+				array[i].step = step;
+			} else {
+				step = generator * 0.8;
+				array[i].step = step;
+			}
+		} else {
+			srand(time(NULL));
+			generator = 3 + rand() % 3;
+
+			if (array[i].tires == 0) {
+				step = generator * 0.7;
+				array[i].step = step;
+			} else {
+				step = generator;
+				array[i].step = step;
+			}
+		}
+	}
+}
+
+
+void ispisMatrice(raceTracks* rt) {
+	int i;
+	int j;
+	for (i = 0; i < 100; i++) {
+		for (j = 0; j < 3; j++) {
+			printf("%d\t", rt->tracks[j][i]);
+		}
+		printf("\n");
+	}
+}
+
