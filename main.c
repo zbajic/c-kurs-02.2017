@@ -35,7 +35,7 @@ RaseA();
 for (i=0; i<13; i++){
 	fscanf(fp, "%c", &pom);
 	if((pom!='#')){
-		niz[i]=pom;
+		niz[i]= pom;
 	}
 //fscanf(fp, "%c", &niz[i]);
 		}

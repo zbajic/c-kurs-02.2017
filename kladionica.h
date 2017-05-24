@@ -22,7 +22,7 @@ typedef struct str {
 	int brTr;
 	int redBr;
 	char* ime;
-}STR;
+}STR ;
 
 void Rase();
 void RaseA();

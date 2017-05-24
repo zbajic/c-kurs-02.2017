@@ -269,7 +269,7 @@ char ch = '1';
 									{
 										if(niz_traka[k]=='3')
 										{
-											for(pomak = 0;pomak<niz_poz[k]-48;pomak++)
+											for(pomak = 0;pomak <niz_poz[k]-48;pomak++)
 											{
 										printf("-");
 											}
