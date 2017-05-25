@@ -20,7 +20,7 @@
 typedef struct race{
 	 char c;				//prvi karakter oznacava da li se radi o hipodromu ili auto trci
 	 char* date[1];		//datum trke
-	 char* name[10];			//takmicar
+	 char* name[10];			 //takmicar
  }race;
 
 typedef race buffer_type;

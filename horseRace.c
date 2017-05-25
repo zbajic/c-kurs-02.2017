@@ -8,7 +8,7 @@
 
 
 
-#define NUMBER_OF_LANES 10        // number of rows in matrix
+#define NUMBER_OF_LANES 10        //  number of rows in matrix
 #define RACE_LENGTH 500   // number of columns in matrix
 
 

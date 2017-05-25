@@ -39,7 +39,7 @@ int put(buffer_struct* buf, buffer_type x)
 
 buffer_type get(buffer_struct* buf)
 {
-	//if (isEmpty(buf)) return BUFFER_GET_ERROR;
+	//if (isEmpty(buf)) return  BUFFER_GET_ERROR;
 
 	buffer_type x;
 	x = *(buf->front);

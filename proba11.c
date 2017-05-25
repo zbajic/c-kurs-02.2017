@@ -16,7 +16,7 @@ void file_process() {
 	horse* first = NULL;
 	horse* last = NULL;
 	char* date;
-	race1 = fopen("race1.txt", "r"); //otvaranje fajla
+	race1 = fopen("race1.txt", "r"); // otvaranje fajla
 	if (race1 == NULL) {
 		printf("Cannot open file\n");
 // return 1;
