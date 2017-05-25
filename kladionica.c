@@ -340,57 +340,57 @@ void liveScore() {
 // Ispis konacnih rezultata iz bafera
 void Results()
 {
-	 buffer_struct buffer;		//naknadno ce biti definisano u glavnoj niti a ne ovdje
-	 buffer_struct buffer1;
+	buffer_struct buffer; //naknadno ce biti definisano u glavnoj niti a ne ovdje
+	buffer_struct buffer1;
 
-	 int i;
-	 trka  memorija;
+	int i;
+	trka memorija, datoteka;
 
-	 // simulacija sadrzaja  bafera
+	// simulacija sadrzaja  bafera
 
-	 trka a ={'A', "10.05.2017",{"auto 1", "auto 2", "auto 7", "auto 4", "auto 8", "auto 3", "auto 5", "auto 9", "auto 6","auto 10"}};
-     trka b ={'H',"11.03.2017", {"konj 5", "konj 3", "konj 7", "konj 1", "konj 10", "konj 4", "konj 5", "konj 6", "konj 8", "konj 9" }};
-     trka c ={'A', "2.09.2017", {"auto 3", "auto 9", "auto 5", "auto 1", "auto 2", "auto 4", "auto 8", "auto 6", "auto 7", "auto 10"}};
+	trka a = { 'A', "10.05.2017", { "auto 1", "auto 2", "auto 7", "auto 4",
+			"auto 8", "auto 3", "auto 5", "auto 9", "auto 6", "auto 10" } };
+	trka b = { 'H', "11.03.2017", { "konj 5", "konj 3", "konj 7", "konj 1",
+			"konj 10", "konj 4", "konj 5", "konj 6", "konj 8", "konj 9" } };
+	trka c = { 'A', "2.09.2017", { "auto 3", "auto 9", "auto 5", "auto 1",
+			"auto 2", "auto 4", "auto 8", "auto 6", "auto 7", "auto 10" } };
 
-     Init(&buffer);   //naknadno ce biti inicijalizovano u glavnoj niti a ne ovdje
-     Init(&buffer1);
+	Init(&buffer);  //naknadno ce biti inicijalizovano u glavnoj niti a ne ovdje
+	Init(&buffer1);
 
+	printf("\n");
+	printf("************************\n");
+	put(&buffer, a);
+	memorija = get(&buffer);
+	put(&buffer1, memorija);
+	dump(&buffer1);
+	printf("*************************\n");
+	sleep(3);
 
-     printf("\n");
-     printf("************************\n");
-     put(&buffer, a);
-     memorija=get(&buffer);
-     put(&buffer1, memorija);
-     dump(&buffer1);
-     printf("*************************\n");
-     sleep(3);
+	printf("\n");
+	put(&buffer, b);
+	memorija = get(&buffer);
+	put(&buffer1, memorija);
+	dump(&buffer1);
+	printf("*************************\n");
+	sleep(3);
 
-     printf("\n");
-     put(&buffer, b);
-     memorija=get(&buffer);
-     put(&buffer1, memorija);
-     dump(&buffer1);
-     printf("*************************\n");
-     sleep(3);
+	put(&buffer, c);
+	memorija = get(&buffer);
+	put(&buffer1, memorija);
+	dump(&buffer1);
+	printf("*************************\n");
+	sleep(3);
 
-     put(&buffer, c);
-     memorija=get(&buffer);
-     put(&buffer1, memorija);
-     dump(&buffer1);
-     printf("*************************\n");
-     sleep(3);
+	if (isFull(&buffer1)) {
 
-     if(isFull(&buffer1))
-     {
-    	 get(&buffer1);
-     }
-     printf("Bafer pun\n");
-     dump(&buffer1);
-     printf("*************************\n");
+		datoteka = get(&buffer1);
+		printRace(&datoteka); /*upis zastarjelih rezultata u tekstualnu datoteku*/
 
-
-
-
+	}
+	printf("Bafer pun\n");
+	dump(&buffer1);
+	printf("*************************\n");
 
 }
 
