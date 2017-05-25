@@ -25,13 +25,17 @@
  }trka;
 
 
-void Rase();
-void RaseA();
-void ispisK();
-void introK();
-void ispisA();
-void introA();
-void printRace(trka*);
+ void Race();
+ void RaceA();
+ void RaceK();
+ void ispisKonja();
+ void parsiranjeK();
+ void parsiranjeA();
+ void introK();
+ void ispisA();
+ void introA();
+ void printRace(trka*);
+ void sort(int*,int*,int);
 
 
 #endif
