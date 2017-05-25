@@ -1,9 +1,0 @@
-Car 1 row 2 column 0 tires 1
-Car 2 row 2 column 1 tires 0
-Car 3 row 0 column 2 tires 0
-Car 4 row 0 column 0 tires 1
-Car 5 row 2 column 2 tires 1
-Car 6 row 1 column 1 tires 0
-Car 7 row 1 column 2 tires 0
-Car 8 row 1 column 0 tires 1
-Car 9 row 0 column 1 tires 0
