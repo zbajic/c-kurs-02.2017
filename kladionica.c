@@ -1,35 +1,32 @@
 /*
  * kladionica.c
  *
- *  Created on: May 24, 2017
- *      Author: rtrk
- */
-
-
-/*
- * kladionica.c
- *
  *  Created on: May 23, 2017
  *      Author: rtrk
  */
 #include"kladionica.h"
 #include <stdio.h>
 #include <string.h>
-
-static char niz[22];
+#include <stdlib.h>
+//////////////////////
+static char niz[42];//22
 static char nizA[38];
+/////////////////////
 
+static int skok;        //21   skok u fajlu za podatke o pozicijama konja prilikom citanja frejma
+static int skokA = 37;  //  skok u fajlu za podatke o pozicijama auta prilikom citanja frejma
+/////////////////////
 
-
-static int skok = 21;
-static int skokA = 37;
-
+//static int br_skokova;
 static int br_skokova;
-static int br_skokovaA;
+static int br_skokovaA; // koliko se puta izvrsio skok u fajlu za auta, prilikom citanja
+/////////////////////
 
+//pomaci konja i auta u odnosu na start
+int konj_pomak[11];
+int auta_pomak[10];
 
-
-
+// F-ja isjeca frejm iz fajla za konje
 void Rase(){
 
 int fleg=1;
@@ -45,8 +42,8 @@ sleep(5);
 	if ( (fp = fopen( "live.dat" , "r" )) != NULL )
 	{
 		if(fleg){
-		fseek(fp, skok*br_skokova, SEEK_CUR);   //pomjera pointer u fajlu za skok*br_skokova
-		fgets(niz,22,fp);                       //citanje niza karaktera u niz
+		fseek(fp, skok, SEEK_CUR);             //pomjera pointer u fajlu za skok*br_skokova
+		fgets(niz,42,fp);                       //citanje niza karaktera u niz
 if(niz[0]=='$')
 {
 	fleg=0;                                    //fleg koji onemoguci citanje iz fajla kada se dodje do karaktera'$'
@@ -65,27 +62,60 @@ else{
 	}
 }
 
-//F-ja za graficki prikaz trke konja
+//F-ja konvertuje primljeni frejm i graficki prikaz trke konja
 
 void ispisK()
 {
-int i=0;
-int j=0;
-int k=0;
-for(i=0;i<20;i++)
-{
-	if((niz[i]!='#' && niz[i]!=',' && niz[i]!='*'))
+	int niz_pomaka[11];
+	int ukupan_broj=0;//broj kakaktera od * do prvog karaktera #
+    char niz_br[4];//karakteri izmedju dva karaktera ,
+    int brc=0;      //br karaktera izmedju dava karaktera ','
+    int br=0;
+    int i=1;
+    int j=0;
+    int k=0;
+    int t = 0;
+
+while(niz[0]=='*' && niz[i]!='#')
 	{
-		j=niz[i]-48;
-		for( k =0; k<j;k++)
+	ukupan_broj++;
+
+		if(niz[i]!=',' && niz[i]!='*')
 		{
-			printf("-");
+			niz_br[brc] = niz[i];
+			//printf("%d",niz_br[brc]);
+			brc++;
+			i++;
 		}
-		printf("*");
-		printf("\n");
+		else
+		{
+			niz_br[brc] = '\0';
+			niz_pomaka[br] = atoi(niz_br);
+			//printf("%d ",niz_pomaka[br]);
+			brc = 0;
+			br++;
+			i++;
+		}
+
 	}
+niz_pomaka[br]='\0';
+skok += ukupan_broj+2;
+for(t=0;t<10;t++){
+	konj_pomak[t]=niz_pomaka[t];
+	//printf("%d ",konj_pomak[t]);
 }
+for(j = 0;j<10;j++)
+{
+	for(k=0;k<niz_pomaka[j];k++)
+	{
+		printf("-");
+	}
+	printf("*");
+	            printf("\n");
+}
+
 printf("==================================\n");
+
 }
 
 void introK(){
@@ -173,16 +203,18 @@ else{
 
 
 void ispisA(){
-char niz_traka[10];      // broj trake u kojoj je auto, niz_traka[0] je traa za prvo auto itd
+
+char niz_traka[10];      // broj trake u kojoj je auto, niz_traka[0] je traka za prvo auto itd
 char niz_poz[10];        //
 char pomak;
 char ch = '1';
-	int i=0;
-	int j=0;
-	int k=0;
-	int br_tr = 0;
-	int br_p = 0;
-	int fleg_p=1;
+int t = 0;
+int i=0;
+int j=0;
+int k=0;
+int br_tr = 0;
+int br_p = 0;
+int fleg_p=1;
 
 
 	/*
@@ -225,19 +257,25 @@ char ch = '1';
 		}
 	}
 
+	for(t = 0;t<9;t++)
+	{
+		auta_pomak[t] = niz_poz[t]-48;
+	//	printf("%d",auta_pomak[t]);
 
+	}
 
+	//printf("\n");
 			//j=niz[i]-48;
-			for( k =0; k<10;k++)
+			for( k =0; k<9;k++)
 			{
 				if(niz_traka[k]=='1')
 				{
 					for(pomak = 0;pomak<niz_poz[k]-48;pomak++)
 					{
-				printf("-");
+				    printf("-");
 					}
 					printf("%d",k+1);
-								printf("\n");
+					printf("\n");
 				}
 
 
@@ -253,10 +291,10 @@ char ch = '1';
 							{
 								for(pomak = 0;pomak<niz_poz[k]-48;pomak++)
 								{
-							printf("-");
+							    printf("-");
 								}
 								printf("%d",k+1);
-											printf("\n");
+								printf("\n");
 							}
 
 
@@ -269,21 +307,19 @@ char ch = '1';
 									{
 										if(niz_traka[k]=='3')
 										{
-											for(pomak = 0;pomak <niz_poz[k]-48;pomak++)
+											for(pomak = 0;pomak<niz_poz[k]-48;pomak++)
 											{
-										printf("-");
+										    printf("-");
 											}
 											printf("%d",k+1);
-														printf("\n");
+											printf("\n");
 										}
-
-
-
 									}
 						printf("==================================\n");
 
 
 		}
+
 
 void printRace(trka* t){			//ispis trke u arhivu
 
