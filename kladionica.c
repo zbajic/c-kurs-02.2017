@@ -285,6 +285,33 @@ char ch = '1';
 
 		}
 
+void printRace(trka* t){			//ispis trke u arhivu
+
+			   FILE *fptr;
+			   fptr = fopen("test.txt","a+");
+			   int i;
+
+			   if(fptr == NULL)
+			   {
+			      printf("Error!");
+			   }
+			   if(t->c == 'A'){
+			   fprintf(fptr,"Trka konja(%s), rezultati:", t->datum);
+			   for(i = 0;i < 10; i++){
+				   fprintf(fptr," %d.%s", i+1, t->ime[i]);
+			   }
+			   fprintf(fptr,"\n");
+			   fclose(fptr);
+			   }
+				if(t->c == 'B'){
+				   fprintf(fptr,"Trka auta(%s), rezultati:", t->datum);
+				   for(i = 0;i < 9; i++){
+					   fprintf(fptr,"%d. %s", i+1, t->ime[i]);
+				   }
+				   fprintf(fptr,"\n");
+				   fclose(fptr);
+		}
+}
 
 
 

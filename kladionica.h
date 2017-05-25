@@ -17,12 +17,13 @@
 #ifndef _KLADIONICA_H
 #define _KLADIONICA_H
 
-typedef struct str {
-	char tip;
-	int brTr;
-	int redBr;
-	char* ime;
-}STR ;
+
+ typedef struct trka{
+	 char c;				// A ako je konj, B ako je auto
+	 char datum[11];		//datum trke
+	 char* ime[10];			//imena poredana po pozicijama
+ }trka;
+
 
 void Rase();
 void RaseA();
@@ -30,6 +31,7 @@ void ispisK();
 void introK();
 void ispisA();
 void introA();
+void printRace(trka*);
 
 
 #endif
