@@ -34,6 +34,7 @@ void setStartPosition(car* array, raceTracks* rt) {
 		array[i].tires = d - '0';
 
 	}
+	//fclose(fp);
 }
 /*
  ============================================================================
@@ -108,7 +109,6 @@ void* move(void* param1) {
 	car* car1 = rt->car1;
 	raceTracks* racetrack = rt->raceTrack;
 	while (1) {
-
 		int y = car1->row;
 		int x = car1->column;
 
@@ -118,7 +118,7 @@ void* move(void* param1) {
 
 			//ako je auto u 0. koloni
 			if (x == 0) {
-				pthread_mutex_lock(&count_mutex0);
+		//		pthread_mutex_lock(&count_mutex0);
 				if ((racetrack->tracks[x][y + 1] != 0) && (racetrack->tracks[x][y + 1] == 0)) {
 					int condition = 1;
 					while (condition) {
@@ -143,6 +143,7 @@ void* move(void* param1) {
 					}
 				} else if ((racetrack->tracks[x][y + 1] != 0) && (racetrack->tracks[x][y + 1] != 0)) {
 					currentStep = 0;
+			//		pthread_mutex_unlock(&count_mutex0);
 					break;
 				}
 				else {
@@ -152,12 +153,12 @@ void* move(void* param1) {
 					y++;
 					currentStep--;
 				}
-				pthread_mutex_unlock(&count_mutex0);
+			//	pthread_mutex_unlock(&count_mutex0);
 			}
 
 			//ako je auto u 1.koloni
 			else if (x == 1) {
-				pthread_mutex_lock(&count_mutex1);
+	//			pthread_mutex_lock(&count_mutex1);
 				if ((racetrack->tracks[x][y + 1] != 0) && (racetrack->tracks[x - 1][y] == 0) && (racetrack->tracks[x + 1][y] == 0))  {
 					int condition = 1;
 					while (condition) {
@@ -184,6 +185,7 @@ void* move(void* param1) {
 					}
 				} else  if ((racetrack->tracks[x][y + 1] != 0) && (racetrack->tracks[x - 1][y] != 0) && (racetrack->tracks[x + 1][y] != 0)) {
 					currentStep = 0;
+	//				pthread_mutex_unlock(&count_mutex1);
 					break;
 				}
 				else {
@@ -198,7 +200,7 @@ void* move(void* param1) {
 
 			//ako je u 2. kolini
 			else if (x == 2) {
-				pthread_mutex_unlock(&count_mutex2);
+//				pthread_mutex_unlock(&count_mutex2);
 				if ((racetrack->tracks[x][y + 1] != 0) && (racetrack->tracks[x - 1][y] == 0)) {
 					int condition = 1;
 					while (condition) {
@@ -225,6 +227,7 @@ void* move(void* param1) {
 					}
 				} else if ((racetrack->tracks[x][y + 1] != 0) && (racetrack->tracks[x - 1][y] != 0)) {
 					currentStep = 0;
+	//				pthread_mutex_unlock(&count_mutex2);
 					break;
 				}
 				else {
@@ -234,25 +237,21 @@ void* move(void* param1) {
 					y++;
 					currentStep--;
 				}
-				pthread_mutex_unlock(&count_mutex2);
+	//			pthread_mutex_unlock(&count_mutex2);
 			}
 
 		}
 
 		ispisMatrice(racetrack->tracks);
+		printf("--------------\n");
 		pthread_mutex_lock(&count_mutex4);
-		if(DEBUG){
-		printf("*%d\n", car1->IDCar);
-		printf("----------------------");
-		printf("pom je: %d\n", pom);
-		}
-		pom++;
-		if (pom == 10) {
-			printf("usao u if");
-			break;
-
-		}
+		++pom;
 		pthread_mutex_unlock(&count_mutex4);
+		if(pom < 9){
+        return NULL;
+		}
 		sleep(1);
+		//pthread_mutex_unlock(&count_mutex4);
 	}
 }
+

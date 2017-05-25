@@ -30,7 +30,7 @@
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1337551143" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.1395288052" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug">
-								<option id="gnu.c.link.option.libs.714673797" superClass="gnu.c.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+								<option id="gnu.c.link.option.libs.714673797" name="Libraries (-l)" superClass="gnu.c.link.option.libs" useByScannerDiscovery="false" valueType="libs">
 									<listOptionValue builtIn="false" value="pthread"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1452640780" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
@@ -44,6 +44,13 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.exe.debug.1242972958.1985111801" name="Common.h" rcbsApplicability="disable" resourcePath="src/Common.h" toolsToInvoke=""/>
+					<fileInfo id="cdt.managedbuild.config.gnu.exe.debug.1242972958.1816150454" name="Main.c" rcbsApplicability="disable" resourcePath="src/Main.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.85307427.2002635306">
+						<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.85307427.2002635306" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.85307427"/>
+					</fileInfo>
+					<sourceEntries>
+						<entry excluding="src/Main.c|src/Common_Car_Function.c|src/Common.h|src/Auto_Trka.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
