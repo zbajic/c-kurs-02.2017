@@ -29,7 +29,7 @@ horse_step h_step_array[NUMBER_OF_LANES]; // saving horse steps - 10 steps for 1
 //int temp[NUMBER_OF_LANES];
 int testID[NUMBER_OF_LANES][RACE_LENGTH]; // horse ID's
 short name_index;// used in process_result() for index of names
-char* race_date; // date of current race
+char* race_date; // date of current race   RADI SAMO SA FAJLOVIMA TRKA!!!!!!!! INACE JE NULL
 
 int flags[10]; // provjera da li je skocio
 int koraci[10]; // pamtimo korake
@@ -37,6 +37,7 @@ int ukupno[10];
 int var=0;
 int posalji[10];
 int horseID[10];
+int otpisani[10];
 
 
 pthread_mutex_t     mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -112,15 +113,26 @@ void process_positions()
 	int i;
 	char f_name[] = "race_";
 	char date[12];
-	for (i = 0; i < 12; i++)
+	//char write_steps[22];
+/*	for (i = 0; i < 12; i++)
 		{
 			date[i] = *(race_date + i);
 		}
-		strcat(f_name, date);
+		strcat(f_name, date);*/
+	//
+	//for(i=0;i<10;i++){
+	//	write_steps
 
-		FILE* fp = fopen("aaaaaa.txt", "w+");
 
-		fprintf(fp, "%s ","*" );
+	//}
+		FILE* fp = fopen("trenutnaTrka.txt", "a+");
+
+		fprintf(fp, "%s","*" );
+		for(i=0;i<10;i++){
+			fprintf(fp, "%d,", horseID[i] );
+		}
+		fprintf(fp, "%s","#" );
+		fprintf(fp, "%s","$" );
 
 	fclose(fp);
 }
@@ -191,14 +203,19 @@ void* run(void* param)
     konj se nakon pomjeraja smjesta na odgovarajucu poziciju u matrici
 
     */
-    while(end>0){
-
+    while(end>=0){
+int i;
 	pthread_mutex_lock(&mutex);
     horse* data = (horse*)param;
 	//printf("%d\n", data->horse_id);
 
     if(sviSkocili()==1){
     //	printf("svi =%d\n ", data->horse_id);
+    	for(i=0;i<10;i++){
+    		printf("%d ", horseID[i]);
+    		}
+    	printf("\n");
+    	process_positions();
     	reset();
     	pthread_cond_broadcast(&cond);
 
@@ -215,12 +232,19 @@ void* run(void* param)
 
     		//printf("Stigao: %d ",data->horse_id);
     		printf("h_id_exit = %d  step=%d \n",data->horse_id, ukupno[data->horse_id]);
+
+    		if(otpisani[data->horse_id]==0){
     		end--;
+    	}
+
+    	otpisani[data->horse_id] = 1;
+
     		izadji=200;
+    		horseID[data->horse_id] = ukupno[data->horse_id];
     		flags[data -> horse_id]=1;
     		 //pthread_setcancelstate(t_horses[data->horse_id]);
-    		// pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
-    	//pthread_cancel(t_horses[data->horse_id]);
+    		 //pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+            //pthread_cancel(t_horses[data->horse_id]);
     	sleep(1);
     	printf("otpisani=%d\n", data->horse_id);
     	printf("end=%d\n",end);
