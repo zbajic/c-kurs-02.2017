@@ -10,9 +10,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include "Common.h"
+#include "Common_01.h"
 
-pthread_t ID_1, ID_2, ID_3, ID_4, ID_5, ID_6;
+pthread_t ID_1, ID_2, ID_3, ID_4, ID_5, ID_6, STOP;
 
 car arrayOfCars[9];
 raceTracks raceTracks1;
@@ -23,9 +23,8 @@ parametar ptr_3;
 parametar ptr_4;
 parametar ptr_5;
 parametar ptr_6;
-parametar ptr_7;
-parametar ptr_8;
-parametar ptr_9;
+
+
 
 int main(void) {
 
@@ -58,6 +57,7 @@ int main(void) {
 	pthread_create(&ID_4, NULL, move, (void*) &ptr_4);
 	pthread_create(&ID_5, NULL, move, (void*) &ptr_5);
 	pthread_create(&ID_6, NULL, move, (void*) &ptr_6);
+	pthread_create(&STOP, NULL, stopProgram, NULL);
 
 
 	pthread_join(ID_1, NULL);

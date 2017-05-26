@@ -9,6 +9,7 @@
  */
 
 void* move(void* param1);
+void* stopProgram(void* param);
 typedef struct raceTracks {
 	int tracks[3][100];
 	int weatherCondition;

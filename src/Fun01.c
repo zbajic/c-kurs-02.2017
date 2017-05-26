@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>
-#include "Common.h"
+#include "Common_01.h"
 #define DEBUG 1
 
 void setStartPosition(car* array, raceTracks* rt) {
@@ -106,7 +106,17 @@ pthread_mutex_t mutex4;
 int pom = 0;
 int numberOfLaps = 2;
 int currentLap = 0;
-//trka trka1;
+
+
+char ch = ' ';
+
+void* stopProgram(void* param) {
+	while (ch != 'q') {
+		ch = getchar();
+	}
+}
+
+int numOfLaps = 0;
 void* move(void* param1) {
 	parametar* rt = (parametar*) param1;
 	car* car1 = rt->car1;
@@ -121,45 +131,44 @@ void* move(void* param1) {
 		printf("\nkorak %d , auto: %d\n", currentStep, car1->IDCar);
 		pthread_mutex_unlock(&mutex0);
 
+		pthread_mutex_lock(&mutex4);
 		int z = (y + currentStep);
+//		if (z > 99) {
+//			z -= 100;
+//			numOfLaps++;
+//			printf("br kr:%d", numOfLaps);
+//
+//		}
 
 		if (racetrack->tracks[x][z] == 0) {
-			pthread_mutex_lock(&mutex4);
 			racetrack->tracks[x][y] = 0;
-			printf("\nnema niko na mjestu stavi me tu upisi 0\n");
+			printf("\nnema\n");
 			racetrack->tracks[x][z] = car1->IDCar;
 			car1->row += currentStep;
-			pthread_mutex_unlock(&mutex4);
 		}
 
 		else if (racetrack->tracks[x][z] != 0) {
-			pthread_mutex_lock(&mutex4);
-			printf("\nima neko %d\n", racetrack->tracks[x][z]);
+			printf("\nima");
 			racetrack->tracks[x][z - 1] = car1->IDCar;
 			racetrack->tracks[x][y] = 0;
 			car1->row += (currentStep - 1);
-			pthread_mutex_unlock(&mutex4);
-		} else {
-
 		}
 
 		int i;
 		int j;
-		pthread_mutex_lock(&mutex1);
 		for (i = 0; i < 100; i++) {
 			for (j = 0; j < 3; j++) {
 				printf("%d\t", racetrack->tracks[j][i]);
 			}
 			printf("\n");
-			pthread_mutex_unlock(&mutex1);
 		}
+		pthread_mutex_unlock(&mutex4);
 
-		char ch;
-		ch = getchar();
 		if (ch == 'q') {
 			exit(0);
 		}
 		sleep(2);
+
 	}
 
 	return NULL;

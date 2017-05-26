@@ -45,9 +45,6 @@
 						</toolChain>
 					</folderInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.exe.debug.1242972958.1985111801" name="Common.h" rcbsApplicability="disable" resourcePath="src/Common.h" toolsToInvoke=""/>
-					<fileInfo id="cdt.managedbuild.config.gnu.exe.debug.1242972958.1816150454" name="Main.c" rcbsApplicability="disable" resourcePath="src/Main.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.85307427.2002635306">
-						<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.85307427.2002635306" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.85307427"/>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="src/Main.c|src/Common_Car_Function.c|src/Common.h|src/Auto_Trka.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
