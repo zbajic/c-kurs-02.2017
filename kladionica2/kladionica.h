@@ -20,3 +20,4 @@ void* Punjenje_bafera(void* pParam);
 void* Results(void* pParam);
 
 #endif
+
