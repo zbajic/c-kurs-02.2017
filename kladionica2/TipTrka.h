@@ -1,7 +1,7 @@
 #ifndef TIPTRKA_H_
 #define TIPTRKA_H_
 
-#include <stdio.h>
+
 
 /* Struktura u koju se upisuju podaci o jednoj trci */
 

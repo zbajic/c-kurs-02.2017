@@ -1,20 +1,13 @@
 #ifndef CIRCULARBUFFER_H_
 #define CIRCULARBUFFER_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "kladionica.h"
 
-#define BUFFER_SIZE 11
+#include "TipTrka.h"
+
+#define BUFFER_SIZE 5
 #define BUFFER_GET_ERROR -1111111111
 
 
-//typedef struct trka{
-//	 char c;				// prvi karakter oznacava da li se radi o hipodromu ili autotrci
-//	 char datum[12];		// datum trke
-//	 char* ime[10];			//     pozicija  ucesnika
-// }trka;
 
 typedef trka buffer_type;
 
