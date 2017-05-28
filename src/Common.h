@@ -8,7 +8,11 @@
  ============================================================================
  */
 
-void* move(void* param1);
+void* move(void* parametar);
+void* Quit_Game();
+void saveRaceResult();
+extern int8_t Place[6];
+
 typedef struct raceTracks {
 	int tracks[3][100];
 	int weatherCondition;
@@ -21,9 +25,9 @@ typedef struct car {
 	int tires;
 	int step;
 } car;
-extern int s;
+
 typedef struct parametar {
-	car* car1;
+	car* Cars;
 	raceTracks* raceTrack;
 } parametar;
 
@@ -32,3 +36,8 @@ typedef struct race {
 	int numberOfLaps;
 } race;
 
+typedef struct trka {
+	char c;
+	char datum[11];
+	char* nizAuta;
+} trka;
