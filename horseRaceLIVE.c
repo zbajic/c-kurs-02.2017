@@ -178,7 +178,7 @@ void* run(void* param)
 
     int i;
 
-    pthread_mutex_lock(&mutex); // lock critical section
+    pthread_mutex_lock(&mutex); //  lock critical section
 
 
     horse* data = (horse*)param;
