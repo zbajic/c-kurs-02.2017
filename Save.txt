@@ -1,0 +1,30 @@
+Race DATE: 2017-5-28 22:46:34
+1 place Car ID: 3
+2 place Car ID: 4
+3 place Car ID: 5
+4 place Car ID: 6
+5 place Car ID: 2
+Race DATE: 2017-5-28 22:47:20
+1 place Car ID: 3
+2 place Car ID: 4
+3 place Car ID: 6
+4 place Car ID: 5
+5 place Car ID: 2
+Race DATE: 2017-5-28 22:53:33
+1 place Car ID: 2
+2 place Car ID: 3
+3 place Car ID: 4
+4 place Car ID: 5
+5 place Car ID: 6
+Race DATE: 2017-5-29 8:37:43
+1 place Car ID: 3
+2 place Car ID: 4
+3 place Car ID: 5
+4 place Car ID: 6
+5 place Car ID: 2
+Race DATE: 2017-5-29 8:40:55
+1 place Car ID: 3
+2 place Car ID: 4
+3 place Car ID: 5
+4 place Car ID: 6
+5 place Car ID: 2
