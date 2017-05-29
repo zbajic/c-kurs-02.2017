@@ -5,14 +5,14 @@
 #include "CircularBuffer.h"
 #include "TipTrka.h"
 
-void Race();
-void RaceA();
-void RaceK();
-void ispisKonja();
+void parsiranje();
+void cutA();
+void cutK();
+void raceK();
 void parsiranjeK();
 void parsiranjeA();
 void introK();
-void ispisA();
+void raceA();
 void introA();
 void sort(int*,int*,int);
 void printRace(trka*);

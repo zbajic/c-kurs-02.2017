@@ -43,7 +43,7 @@ char niz_poz[10];
 char niz_traka[10];
 
 // F-ja isjeca frejm iz fajla za konje
-void RaceK() {
+void cutK() {
 	int fleg = 1;
 	FILE *fp;
 	FILE* novi;
@@ -100,7 +100,7 @@ void parsiranjeK() {
 //ispisKonja();
 }
 
-void ispisKonja() {
+void raceK() {
 	int j = 0;
 	int k = 0;
 	for (j = 0; j < 10; j++) {
@@ -149,7 +149,7 @@ void introK() {
 	printf("==================================\n");
 }
 
-void RaceA() {
+void cutA() {
 	int fleg = 1;
 	FILE *fp;
 	FILE* novi;
@@ -170,9 +170,11 @@ void RaceA() {
 	}
 }
 
-void Race() {
-	RaceA();
-	RaceK();
+void parsiranje() {
+	cutA();
+	parsiranjeA();
+	cutK();
+	parsiranjeK();
 }
 
 void parsiranjeA() {
@@ -201,7 +203,7 @@ void parsiranjeA() {
 	}
 }
 
-void ispisA() {
+void RaceA() {
 // broj trake u kojoj je auto, niz_traka[0] je traka za prvo auto itd
 //
 	char pomak;
@@ -286,7 +288,10 @@ void liveScore() {
 	int i;
 	int index1[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	int index2[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
 	sort(konj_pomak, index1, 11);
+	sort(auta_pomak, index2, 10);
+
 	printf("------------------------\n");
 	printf("****** Trka konja ******\n");
 	printf("------------------------\n");
@@ -295,7 +300,7 @@ void liveScore() {
 		printf("%d. %s\n", i + 1, konji[index1[i]]);
 	}
 	printf("\n");
-	sort(auta_pomak, index2, 10);
+
 	printf("------------------------\n");
 	printf("****** Trka auta ******\n");
 	printf("------------------------\n");

@@ -22,6 +22,7 @@ int main(void) {
 
 
 	pthread_t Proizvodjac, Potrosac;
+	pthread_t thread_parsiranje;
 
 	//Formiranje semafora
 
@@ -35,6 +36,30 @@ int main(void) {
 
 	pthread_create(&Proizvodjac, NULL, Punjenje_bafera, 0);
 	pthread_create(&Potrosac, NULL, Results, 0);
+	pthread_create(&thread_parsiranje, NULL, parsiranje, NULL);
+
+	printf("Unesite zeljeni metod rada:\");
+		printf("1 za live score, 2 za rezultate, 3 za prikaz trenutne trke\n");
+		scanf("%d",&c);
+		switch(c){
+	    case 1:
+	        liveScore();
+	        break;
+	    case 2:
+	        Results();
+	        break;
+	    case 3:
+	        printf("Unesite 3 za prikaz trke auta a 4 za prikaz trke auta.\n");
+	        scanf("%d",&d);
+	        if(c == 3)
+	            raceA();
+	        if(c == 4)
+	            raceK();
+	        else
+	            printf("Pogresan unos.\n");
+	    default:
+	        printf("Pogresan unos.\n");
+		}
 
 	pthread_join(Potrosac, NULL);
 	pthread_join(Proizvodjac, NULL);
