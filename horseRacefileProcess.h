@@ -1,9 +1,3 @@
-/*
- * header.h
- *
- * Created on: May 25, 2017
- * Author: rtrk
- */
 #ifndef HORSERACEFILEPROCESS_H_
 #define HORSERACEFILEPROCESS_H_
 

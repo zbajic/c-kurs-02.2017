@@ -1,4 +1,5 @@
 /*
+
 #include <stdio.h>
 #include <pthread.h>
 #include <math.h>
@@ -9,12 +10,7 @@
 #include "horseRacefileProcess.h"
 
 
-typedef struct race
-{
-	char c = 'K';
-	char* datum[1];
-	char* ime[NUMBER_OF_LANES];
-}race;
+
 
 
 race race_result;// structure for putting results of race in circular buffer
@@ -108,7 +104,7 @@ void* process_result(void* param)
 	{
 		horse* hs = (horse*)param;
 
-		 *FILE* fp=fopen("nesto.txt","a+");
+		FILE* fp=fopen("nesto.txt","a+");
 		fprintf(fp, "%d(%d)",hs->h_result,hs->h_step);
 		fclose(fp);
 
@@ -130,13 +126,6 @@ void* process_result(void* param)
 // RUNNING HORSES - THREADS
 void* run(void* param)
 {
-
-
-    ovo je sad uspjelo da svaku nit tj svakog konja kojeg identifikujem
-    preko horse_id pomjeri za neki korak koji se dobije primjenom funkcije
-    make_step()
-
-    konj se nakon pomjeraja smjesta na odgovarajucu poziciju u matrici
 
 
 
@@ -177,6 +166,8 @@ int main()
     Init(&buf_result); //preparing circular buffer
     file_process(); // getting input from files - horses for race and race date
 
+    printf ("%s \n",h_array[5].name);
+
     if ( start_race_check() == 0)
     {
     	print_canceled_race();
@@ -199,7 +190,7 @@ int main()
 
 
     //print matrix -for testing purpose
-    for (i = 0; i < NUMBER_OF_LANES; i++)
+   /* for (i = 0; i < NUMBER_OF_LANES; i++)
     {
         for (j = 0; j < RACE_LENGTH; j++)
         {
@@ -213,4 +204,7 @@ int main()
     return 0;
 
 }
+
+
+
 */

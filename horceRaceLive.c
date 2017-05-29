@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <pthread.h>
 #include <math.h>
@@ -7,14 +8,14 @@
 #include "horceRaceCBuffer.h"
 #include "horseRacefileProcess.h"
 
-/*
+
 typedef struct race
 {
 	char c = 'K';
 	char* datum[1];
 	char* ime[NUMBER_OF_LANES];
 }race;
-*/
+
 
 race race_result;// structure for putting results of race in circular buffer
 buffer_struct buf_result;
@@ -114,11 +115,11 @@ void process_positions()
 	char f_name[] = "race_";
 	char date[12];
 	//char write_steps[22];
-/*	for (i = 0; i < 12; i++)
+	for (i = 0; i < 12; i++)
 		{
 			date[i] = *(race_date + i);
 		}
-		strcat(f_name, date);*/
+		strcat(f_name, date);
 	//
 	//for(i=0;i<10;i++){
 	//	write_steps
@@ -136,11 +137,11 @@ void process_positions()
 
 	fclose(fp);
 }
- /*make_string(int niz[]){
+ make_string(int niz[]){
 	char*
 
 
-}*/
+}
 
 // SAVING FINAL RESULT OF RACE IN BUFFER
 void* process_result(void* param)
@@ -148,11 +149,11 @@ void* process_result(void* param)
 	if(name_index < NUMBER_OF_LANES	)
 	{
 		horse* hs = (horse*)param;
-		/*
+
 		 *FILE* fp=fopen("nesto.txt","a+");
 		fprintf(fp, "%d(%d)",hs->h_result,hs->h_step);
 		fclose(fp);
-		 */
+
 		strcpy(race_result.date, race_date);
 		race_result.name[name_index++] = hs -> name;
 	}
@@ -194,7 +195,7 @@ int t[10];
 // RUNNING HORSES - THREADS
 void* run(void* param)
 {
-    /*
+
 
     ovo je sad uspjelo da svaku nit tj svakog konja kojeg identifikujem
     preko horse_id pomjeri za neki korak koji se dobije primjenom funkcije
@@ -202,7 +203,7 @@ void* run(void* param)
 
     konj se nakon pomjeraja smjesta na odgovarajucu poziciju u matrici
 
-    */
+
     while(end>=0){
 int i;
 	pthread_mutex_lock(&mutex);
@@ -266,23 +267,23 @@ int i;
   }
     	}
 
-   /*     race_track[data -> horse_id][column] = *data; // writing horse into matrix - each step
+        race_track[data -> horse_id][column] = *data; // writing horse into matrix - each step
         data -> h_result = column;
         testID[data -> horse_id][column] = data->horse_id;
 
-        step = make_step(data -> fitness);*/
+        step = make_step(data -> fitness);
 
 
     //	printf("%d(%d)[%d] ",data -> horse_id,column,step);
         // HORSE THAT FINISHED RACING
-     /*  if (column + step >= RACE_LENGTH) // creating thread for storing result of the race
+       if (column + step >= RACE_LENGTH) // creating thread for storing result of the race
        {
     	    printf("%d ",data -> horse_id);
     	    data->h_result = data ->horse_id;
     	    data->h_step = step;
         	pthread_t res_thread;
         	pthread_create(&res_thread, NULL, process_result, (void *)data);
-        }*/
+        }
    // }
   // }
    pthread_mutex_unlock(&mutex);
@@ -313,7 +314,7 @@ int main()
 	    horse h_array[]={horse1,horse2,horse3,horse4,horse5,horse6,horse7,horse8,horse9,horse10};
 	//    process_positions();
 
-/*
+
     Init(&buf_result); //preparing circular buffer
     file_process(); // getting input from files - horses for race and race date
 
@@ -322,7 +323,7 @@ int main()
     	print_canceled_race();
     }
     else
-    {*/
+    {
     	for (j = 0; j < NUMBER_OF_LANES; j++)
     	{
     		h_array[j].horse_id = j;
@@ -355,3 +356,4 @@ int main()
     return 0;
 
 }
+*/
